@@ -1,6 +1,6 @@
 {
     "icon":"C:\\Program Files\\AddAppXPackageForAllUsers\\icon.ico",
     "title":"Add Appx Package for all users",
-    "cmd":"cmd /c echo \"Add appx bundle package %1 for all users?\"&pause&powershell.exe -Command \"Start-Process cmd.exe -ArgumentList '/c', 'powershell.exe' ,'\\\"/Command\\\"', '\\\"/Add-AppxProvisionedPackage\\\"', '\\\"/PackagePath:%1\\\"', '\\\"/SkipLicense\\\"','&pause' -Verb RunAs\"",
+    "cmd":"cmd /c echo \"Add appx bundle package %1 for all users?\"&pause&powershell.exe -Command \"Start-Process powershell.exe -ArgumentList '\\\"/Command\\\"', '\\\"Add-AppxProvisionedPackage\\\"', '\\\"/PackagePath:%1\\\"', '\\\"/SkipLicense\\\"','&pause' -Verb RunAs\"",
     "name":"AddAppxPackageForAllUsers",
 }
