@@ -26,7 +26,7 @@
 		<rescap:Capability Name="unvirtualizedResources"/>
 	</Capabilities>
 	<Applications>
-		<Application Id="@@APPID@@" Executable="" uap10:TrustLevel="mediumIL" uap10:RuntimeBehavior="win32App">
+		<Application Id="@@APPID@@" Executable="start.bat" uap10:TrustLevel="mediumIL" uap10:RuntimeBehavior="win32App">
 			<uap:VisualElements DisplayName="@@APPNAME@@" Description="@@APPDESCRIPTION@@" BackgroundColor="transparent" Square150x150Logo="icon.png" Square44x44Logo="icon.png">
 			</uap:VisualElements>
 			<Extensions>
