@@ -13,7 +13,7 @@
   IgnorableNamespaces="uap uap2 uap3 rescap desktop desktop4 desktop5 uap10 com">
 	<Identity Name="@@NAME@@" ProcessorArchitecture="neutral" Publisher="CN=localhost" Version="1.0.0.0" />
 	<Properties>
-		<DisplayName>@@NAME@@</DisplayName>
+		<DisplayName>@@APPNAME@@</DisplayName>
 		<PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
 		<Logo>icon.png</Logo>
 		<uap10:AllowExternalContent>true</uap10:AllowExternalContent>
@@ -26,14 +26,14 @@
 		<rescap:Capability Name="unvirtualizedResources"/>
 	</Capabilities>
 	<Applications>
-		<Application Id="@@NAME@@" Executable="@@NAME@@.exe" uap10:TrustLevel="mediumIL" uap10:RuntimeBehavior="win32App">
-			<uap:VisualElements AppListEntry="none" DisplayName="@@NAME@@" Description="@@TITLE@@" BackgroundColor="transparent" Square150x150Logo="icon.png" Square44x44Logo="icon.png">
+		<Application Id="@@APPID@@" Executable="" uap10:TrustLevel="mediumIL" uap10:RuntimeBehavior="win32App">
+			<uap:VisualElements DisplayName="@@APPNAME@@" Description="@@APPDESCRIPTION@@" BackgroundColor="transparent" Square150x150Logo="icon.png" Square44x44Logo="icon.png">
 			</uap:VisualElements>
 			<Extensions>
 				<desktop4:Extension Category="windows.fileExplorerContextMenus">
 					<desktop4:FileExplorerContextMenus>
-											            <desktop5:ItemType Type=".appx">
-							<desktop5:Verb Id="ContextMenuProj1" Clsid="@@UUID@@" />
+			<desktop5:ItemType Type=".appx">
+			                <desktop5:Verb Id="ContextMenuProj1" Clsid="@@UUID@@" />
             </desktop5:ItemType>
             <desktop5:ItemType Type=".msix">
 							<desktop5:Verb Id="ContextMenuProj1" Clsid="@@UUID@@" />
@@ -43,6 +43,9 @@
             </desktop5:ItemType>
             <desktop5:ItemType Type=".msixbundle">
 							<desktop5:Verb Id="ContextMenuProj1" Clsid="@@UUID@@" />
+            </desktop5:ItemType>
+			<desktop5:ItemType Type=".xml">
+							<desktop5:Verb Id="ContextMenuProj2" Clsid="@@UUID2@@" />
             </desktop5:ItemType>
 						<!--Show When Files Selected-->
 						<!--<desktop5:ItemType Type="*">
@@ -54,6 +57,7 @@
 					<com:ComServer>
 						<com:SurrogateServer  DisplayName="Context menu verb handler">
 							<com:Class Id="@@UUID@@" Path="ContextMenu.dll" ThreadingModel="STA"/>
+							<com:Class Id="@@UUID2@@" Path="ContextMenu.dll" ThreadingModel="STA"/>
 						</com:SurrogateServer>
 					</com:ComServer>
 				</com:Extension>
