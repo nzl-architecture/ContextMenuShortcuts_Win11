@@ -182,7 +182,7 @@ public:
     const wchar_t* Cmd()   override { return ContextMenuCMD; }
 };
 
-class __declspec(uuid(ContextMenuUUID2)) ExplorerCommandHandler final : public ExplorerCommandBase {
+class __declspec(uuid(ContextMenuUUID2)) ExplorerCommandHandler2 final : public ExplorerCommandBase {
 public:
     const wchar_t* Title() override { return ContextMenuTitle2; }
     const wchar_t* Icon()  override { return ContextMenuIcon2; }
