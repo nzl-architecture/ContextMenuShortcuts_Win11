@@ -14,9 +14,16 @@ $title = Get-Escaped -WordParam $settings.title
 $cmd = Get-Escaped -WordParam $settings.cmd
 $uuid = [System.Guid]::NewGuid().toString().toUpper()
 $name = $settings.name
+$icon2 = Get-Escaped -WordParam $settings.icon2
+$title2 = Get-Escaped -WordParam $settings.title2
+$cmd2 = Get-Escaped -WordParam $settings.cmd2
+$uuid2 = [System.Guid]::NewGuid().toString().toUpper()
+$name2 = $settings.name2
 # Write-Output $cmd $title $icon
 (Get-Content .\ContextMenuDLL\DLLMain.cpp).Replace("@@TITLE@@",$title).Replace("@@ICON@@",$icon).Replace("@@CMD@@",$cmd).Replace("@@UUID@@",$uuid) | Out-File -Encoding utf8 .\Release\ContextMenu.cpp -Force
 (Get-Content .\template\AppxManifest.xml).Replace("@@NAME@@",$name).Replace("@@UUID@@",$uuid).Replace("@@TITLE@@",$title) | Out-File -Encoding utf8 .\Release\sparse-pkg\AppxManifest.xml -Force
+(Get-Content .\ContextMenuDLL\DLLMain.cpp).Replace("@@TITLE2@@",$title2).Replace("@@ICON2@@",$icon2).Replace("@@CMD2@@",$cmd2).Replace("@@UUID2@@",$uuid2) | Out-File -Encoding utf8 .\Release\ContextMenu.cpp -Force
+(Get-Content .\template\AppxManifest.xml).Replace("@@NAME2@@",$name2).Replace("@@UUID2@@",$uuid2).Replace("@@TITLE2@@",$title2) | Out-File -Encoding utf8 .\Release\sparse-pkg\AppxManifest.xml -Force
 Invoke-WebRequest https://www.nuget.org/api/v2/package/Microsoft.Windows.ImplementationLibrary/1.0.201120.3 -OutFile Release\wil.zip; Expand-Archive -Force -LiteralPath Release\wil.zip Release\WilUnzipped; Copy-Item -Force -r "Release\WilUnzipped\include\wil" Release
 # Begin Compile
 cl.exe /c /Zi /nologo /W3 /WX- /diagnostics:column /sdl /Oi /GL /O2 /Oy- /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive- /Fp"Release\ContextMenu.pch" /Fo"Release\\" /Fd"Release\vc142.pdb" /external:W3 /Gd /TP /analyze- /FC /errorReport:queue "Release\ContextMenu.cpp"
