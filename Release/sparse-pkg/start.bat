@@ -13,8 +13,8 @@ if !msixMatch!==0 (
 )
 if !block!==1 (
 echo "Welcome to use Appx Package Installer Community!"
-set /p "appxfile=Enter your appx package to install (allowed .appx .msix .appxbundle .msixbundle) :")
-else (
+set /p "appxfile=Enter your appx package to install (allowed .appx .msix .appxbundle .msixbundle) :"
+)else (
 set "appxfile=%*"
 )
 AddAppxPackage.bat %appxfile%
