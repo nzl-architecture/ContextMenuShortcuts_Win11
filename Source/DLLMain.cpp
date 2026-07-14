@@ -72,8 +72,9 @@ public:
         if (PathIsRelativeW(iconName))
         {
             wchar_t dllPath[MAX_PATH];
-            if (!GetModuleFileNameW((HMODULE)&__ImageBase, dllPath, MAX_PATH))
-                return E_FAIL;
+            if (!GetModuleFileNameW((HMODULE)&__ImageBase, dllPath, MAX_PATH)){
+                oTaskMemFree(itemName);
+                return E_FAIL;}
 
             PathRemoveFileSpecW(dllPath);
 
